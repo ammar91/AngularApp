@@ -1,0 +1,25 @@
+﻿<div class="inmodal">
+    <div class="modal-header">
+        <i class="fa fa-info"></i>
+        <h3 class="modal-title">{{'COMMON.'+'MODAL.'+'CONFIRM.'+'HEADING' | translate}}</h3>
+    </div>
+
+    <form name='ConfrimDialogForm'>
+        <div>
+            <div class="modal-body">
+                {{'COMMON.'+'MODAL.'+'CONFIRM.'+'DESCRIPTION' | translate}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" ng-click="confirmDialog.close()">
+                    {{'COMMON.'+'MODAL.'+'CONFIRM.'+'BUTTONS.'+'CLOSE' | translate}}
+                </button>
+                <button type="submit" class="btn btn-primary"
+                        ng-disabled="inviteForm.$invalid"
+                        ng-click="confirmDialog.confirm()">
+                    {{'COMMON.'+'MODAL.'+'CONFIRM.'+'BUTTONS.'+'CONFIRM' | translate}}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+

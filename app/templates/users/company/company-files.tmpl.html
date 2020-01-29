@@ -1,0 +1,13 @@
+﻿<div data-ng-if="dataItem.type == 'Folder'">
+    <span class="k-sprite rootfolder" data-ng-if="dataItem.index <= 0"></span>
+    <span class="k-sprite folder" data-ng-if="dataItem.index > 0"></span>
+    <span data-ng-if="dataItem.index <= 0">/</span>
+    <span data-ng-if="dataItem.index > 0">{{dataItem.name}}</span>
+
+</div>
+
+<div data-ng-if="dataItem.type == 'File'">
+    <span class="k-sprite image"></span>
+    {{dataItem.name}}
+</div>
+

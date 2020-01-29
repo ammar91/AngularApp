@@ -1,0 +1,113 @@
+﻿<div class="inmodal">
+    <div class="modal-header">
+        <button type="button" class="close" data-ng-click="userDetail.close()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <i class="fa fa-user"></i>
+        <h4 class="modal-title">{{'ADMIN.'+'USER.'+'MODAL.'+'USER_DETAIL.'+'HEADING' | translate}}</h4>
+    </div>
+    <div class="alert alert-info">
+        <strong>{{'COMMON.'+'HELP_TEXT' | translate}}</strong>
+
+    </div>
+    <form name="userDetailForm">
+        <div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label>{{'ADMIN.'+'USER.'+'MODAL.'+'USER_DETAIL.'+'LABELS.'+'FIRST_NAME' | translate}}:</label>
+                    <input type="text"
+                           placeholder="{{'ADMIN.'+'USER.'+'MODAL.'+'USER_DETAIL.'+'FIELDS.'+'FIRST_NAME' | translate}}"
+                           class="form-control"
+                           data-ng-dblclick="userDetail.editUserDetail($event)"
+                           data-ng-blur="userDetail.updateUserDetail($event)"
+                           data-ng-readonly="true"
+                           required data-ng-model="userDetail.user.firstName">
+                </div>
+                <div class="form-group">
+                    <label>{{'ADMIN.'+'USER.'+'MODAL.'+'USER_DETAIL.'+'LABELS.'+'LAST_NAME' | translate}}:</label>
+                    <input type="text"
+                           placeholder="{{'ADMIN.'+'USER.'+'MODAL.'+'USER_DETAIL.'+'FIELDS.'+'LAST_NAME' | translate}}"
+                           class="form-control"
+                           data-ng-dblclick="userDetail.editUserDetail($event)"
+                           data-ng-blur="userDetail.updateUserDetail($event)"
+                           data-ng-readonly="true"
+                           required data-ng-model="userDetail.user.lastName">
+                </div>
+                <div class="form-group">
+                    <label>{{'ADMIN.'+'USER.'+'MODAL.'+'USER_DETAIL.'+'LABELS.'+'PHONE' | translate}}:</label>
+                    <input id="userPhone"
+                           telephone
+                           class="form-control"
+                           data-ng-dblclick="userDetail.editUserDetail($event)"
+                           data-ng-readonly="true"
+                           required data-ng-model="userDetail.user.phone">
+                </div>
+                <div class="form-group">
+                    <label>
+                        Assign License
+                    </label>
+                    <div>
+                        <select id="licenseDropdown"
+                                data-ng-model="userDetail.selectedLicense"
+                                kendo-drop-down-list style="width: 300px"
+                                k-options="userDetail.licenseOptions"
+                                k-ng-delay="userDetail.licenseOptions"
+                                k-on-change="userDetail.onLicenseSelect()"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>{{'ADMIN.'+'USER.'+'MODAL.'+'USER_DETAIL.'+'LABELS.'+'EMAIL' | translate}}:</label>
+                    <input type="text"
+                           placeholder="{{'ADMIN.'+'USER.'+'MODAL.'+'USER_DETAIL.'+'FIELDS.'+'EMAIL' | translate}}"
+                           class="form-control"
+                           data-ng-readonly="true"
+                           required data-ng-model="userDetail.user.email">
+                </div>
+                <div class="form-group">
+                    <label>{{'ADMIN.'+'USER.'+'MODAL.'+'USER_DETAIL.'+'LABELS.'+'LANGUAGE_CODE' | translate}}:</label>
+                    <input type="text"
+                           placeholder="{{'ADMIN.'+'USER.'+'MODAL.'+'USER_DETAIL.'+'FIELDS.'+'LANGUAGE_CODE' | translate}}"
+                           class="form-control"
+                           maxlength="2"
+                           data-ng-dblclick="userDetail.editUserDetail($event)"
+                           data-ng-blur="userDetail.updateUserDetail($event)"
+                           data-ng-readonly="true"
+                           required data-ng-model="userDetail.user.languageCode">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!--<div class="pull-left">
+                    <button type="button" class="btn btn-default btn-sm" ng-click="userDetail.close()">
+                        {{'ADMIN.'+'USER.'+'MODAL.'+'USER_DETAIL.'+'BUTTONS.'+'CLOSE' | translate}}
+                    </button>
+                </div>-->
+                <div class="pull-right">
+                    <button type="button" class="btn btn-primary btn-sm"
+                            data-ng-click="userDetail.resendInvite()"
+                            data-ng-show="userDetail.user.isActive  && userDetail.user.isInvited">
+                        <i class="fa fa-repeat"></i>&nbsp;&nbsp;
+                        <span class="bold">{{'ADMIN.'+'USER.'+'MODAL.'+'USER_DETAIL.'+'BUTTONS.'+'RESEND_INVITE' | translate}}</span>
+                    </button>
+                    <button type="button" class="btn btn-success btn-sm"
+                            data-ng-click="userDetail.sendPasswordRequest()"
+                            data-ng-show="userDetail.user.isActive && !userDetail.user.isInvited">
+                        <i class="fa fa-repeat"></i>&nbsp;&nbsp;
+                        <span class="bold">{{'ADMIN.'+'USER.'+'MODAL.'+'USER_DETAIL.'+'BUTTONS.'+'RESET_PASSWORD' | translate}}</span>
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm"
+                            data-ng-click="userDetail.deactivateUser()"
+                            data-ng-show="userDetail.user.isActive">
+                        <i class="fa fa-remove"></i>&nbsp;&nbsp;
+                        <span class="bold">{{'ADMIN.'+'USER.'+'MODAL.'+'USER_DETAIL.'+'BUTTONS.'+'DEACTIVATE' | translate}}</span>
+                    </button>
+                    <button type="button" class="btn btn-success btn-sm"
+                            data-ng-click="userDetail.activateUser()"
+                            data-ng-show="!userDetail.user.isActive">
+                        <i class="fa fa-remove"></i>&nbsp;&nbsp;
+                        <span class="bold">{{'ADMIN.'+'USER.'+'MODAL.'+'USER_DETAIL.'+'BUTTONS.'+'ACTIVATE' | translate}}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

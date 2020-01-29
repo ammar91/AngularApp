@@ -1,0 +1,93 @@
+﻿<div data-ng-controller="UpdateLicense as updateLicense">
+    <div class="modal-body">
+        <p>
+            {{'ADMIN.'+'LICENSE.'+'MODAL.'+'UPDATE.'+'DESCRIPTION' | translate}}
+        </p>
+    </div>
+
+    <div class="ibox-content">
+        <form class="form-horizontal" name="updateLicenseForm">
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">
+                    {{'ADMIN.'+'LICENSE.'+'MODAL.'+'UPDATE.'+'LABELS.'+'EXPIRATION_DATE' | translate}}
+                </label>
+                <div class="col-lg-4">
+                    <input kendo-date-picker required
+                           k-min="updateLicense.kendoSetting.minDate"
+                           data-k-format="updateLicense.kendoSetting.format"
+                           k-on-change=""
+                           data-ng-model="updateLicense.license.expiryDate" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-3 control-label">
+                    {{'ADMIN.'+'LICENSE.'+'MODAL.'+'UPDATE.'+'LABELS.'+'IS_ACTIVE' | translate}}
+                </label>
+                <div class="col-lg-4">
+                    <label>
+                        <input data-check-box
+                               type="checkbox" data-ng-model="updateLicense.license.isActive">
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">
+                    {{'ADMIN.'+'LICENSE.'+'MODAL.'+'UPDATE.'+'LABELS.'+'VALUE' | translate}}
+                </label>
+                <div class="col-lg-4">
+                    <input type="text"
+                           placeholder="{{'ADMIN.'+'LICENSE.'+'MODAL.'+'UPDATE.'+'FIELDS.'+'VALUE' | translate}}"
+                           data-ng-model="updateLicense.license.payment.value"
+                           class=" k-textbox">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">
+                    {{'ADMIN.'+'LICENSE.'+'MODAL.'+'UPDATE.'+'LABELS.'+'PAYMENT_METHOD' | translate}}
+                </label>
+                <div class="col-lg-4">
+                    <select kendo-drop-down-list
+                            k-options="updateLicense.options"
+                            data-ng-model="updateLicense.license.payment.paymentMethod"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-3 control-label">
+                    {{'ADMIN.'+'LICENSE.'+'MODAL.'+'UPDATE.'+'LABELS.'+'PAYMENT_DETAIL' | translate}}
+                </label>
+                <div class="col-lg-4">
+                    <textarea style="width: 100%;"
+                              placeholder="{{'ADMIN.'+'LICENSE.'+'MODAL.'+'UPDATE.'+'FIELDS.'+'PAYMENT_DETAIL' | translate}}"
+                              data-ng-model="updateLicense.license.payment.paymentDetail"
+                              class="k-editor-textarea"
+                              rows="5"></textarea>
+                </div>
+            </div>
+
+            <div col-lg-2 class="pull-left">
+                <button class="btn btn-block btn-white" type="button"
+                        style="width: 62px"
+                        data-ng-click="updateLicenseWindow.close()">
+                    {{'ADMIN.'+'LICENSE.'+'MODAL.'+'UPDATE.'+'BUTTONS.'+'CLOSE' | translate}}
+                </button>
+            </div>
+            <div class="col-lg-2  pull-right">
+                <button class="btn btn-block btn-primary" type="submit"
+                        style="width: 62px"
+                        data-ng-disabled="licenseForm.$invalid"
+                        data-ng-click="updateLicense.updateLicenseTerms(updateLicenseWindow)">
+                    {{'ADMIN.'+'LICENSE.'+'MODAL.'+'UPDATE.'+'BUTTONS.'+'ADD' | translate}}
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+

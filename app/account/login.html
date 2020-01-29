@@ -1,0 +1,45 @@
+﻿
+
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div>
+        <div>
+
+            <h1 class="logo-name">CFV</h1>
+
+        </div>
+        <h3>{{'LOGIN.'+'WELCOME_TEXT' | translate}}</h3>
+        <p>
+            <!-- We can write some text here-->
+        </p>
+        <p>{{'LOGIN.'+'DESCRIPTION' | translate}}</p>
+        <form class="m-t" role="form" name="loginForm">
+            <div class="form-group">
+                <select id="languageDropdown"
+                        data-ng-model="main.selectedLanguage"
+                        kendo-drop-down-list style="width: 300px"
+                        k-options="main.languageOptions"
+                        k-on-change="main.onLanguageChange(kendoEvent)"></select>
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="{{'LOGIN.'+'EMAIL_FIELD' | translate}}" required="" data-ng-model="account.user.email">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="{{'LOGIN.'+'PASSWORD_FIELD' | translate}}" required="" data-ng-model="account.user.password">
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b"
+                    data-ng-disabled="loginForm.$invalid"
+                    data-ng-click="account.loginUser()">
+                {{'LOGIN.'+'BUTTON' | translate}}
+            </button>
+
+            <a data-ui-sref="forgot-password"><small>{{'LOGIN.'+'FORGOT_PASSWORD_LINK' | translate}}</small></a>
+            <!--<p class="text-muted text-center">
+                <small>Do not have an account?</small>
+            </p>
+            <a class="btn btn-sm btn-white btn-block" data-ui-sref="register">Create an account</a>-->
+        </form>
+        <p class="m-t">
+            <small>{{'COMMON.'+'PUBLIC_FOOTER.'+'TEXT' | translate}} &copy; {{'COMMON.'+'YEAR' | translate}}</small>
+        </p>
+    </div>
+</div>

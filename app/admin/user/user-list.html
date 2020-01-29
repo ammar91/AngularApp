@@ -1,0 +1,17 @@
+﻿<div class="panel" data-ng-controller="User as user">
+    <div class="panel-body">
+        <div class="table-responsive">
+            <div kendo-grid
+                 k-rebind="user.userGridOptions"
+                 k-options="user.userGridOptions"
+                 k-on-change="user.onUserSelect(kendoEvent)">
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer pull-right" style="background-color: white; border-top: 0px">
+
+        <button class="btn btn-primary fa fa-check" data-ng-click="user.openInviteWindow()">
+            {{'ADMIN.'+'USER.'+'BUTTONS.'+'INVITE' | translate}}
+        </button>
+    </div>
+</div>

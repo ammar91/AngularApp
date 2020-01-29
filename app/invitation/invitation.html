@@ -1,0 +1,48 @@
+﻿<div class="middle-box loginscreen  animated fadeInDown">
+    <div>
+        <div class="text-center">
+
+            <h1 class="logo-name">CFV</h1>
+
+        </div>
+        <h3 class="text-center">{{'ACCEPT_INVITE.'+'WELCOME_TEXT' | translate}}</h3>
+      
+        <p class="text-center">{{'ACCEPT_INVITE.'+'DESCRIPTION' | translate}}</p>
+        <form name="invitationAcceptForm">
+            <div class="form-group">
+                <input type="text" class="form-control"
+                       placeholder="{{'ACCEPT_INVITE.'+'FIELDS.'+'FIRST_NAME' | translate}}"
+                       required
+                       data-ng-model="invitation.acceptInviteModel.firstName">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control"
+                       placeholder="{{'ACCEPT_INVITE.'+'FIELDS.'+'LAST_NAME' | translate}}"
+                       required
+                       data-ng-model="invitation.acceptInviteModel.lastName">
+            </div>
+            <div class="form-group">
+                <input type="tel"
+                       style="width: 299px;"
+                       telephone
+                       class="form-control"
+                       required
+                       data-ng-model="invitation.acceptInviteModel.phone">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control"
+                       placeholder="{{'ACCEPT_INVITE.'+'FIELDS.'+'PASSWORD' | translate}}"
+                       required
+                       data-ng-model="invitation.acceptInviteModel.password">
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b"
+                    data-ng-disabled="invitationAcceptForm.$invalid"
+                    data-ng-click="invitation.acceptInvitation()">
+                {{'ACCEPT_INVITE.'+'BUTTONS.'+'ACCEPT' | translate}}
+            </button>
+        </form>
+        <p class="m-t text-center">
+            <small>{{'COMMON.'+'PUBLIC_FOOTER.'+'TEXT' | translate}} &copy; {{'COMMON.'+'YEAR' | translate}}</small>
+        </p>
+    </div>
+</div>

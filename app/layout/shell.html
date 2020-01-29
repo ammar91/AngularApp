@@ -1,0 +1,26 @@
+<!-- Wrapper-->
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <div ng-include="'cfv/app/layout/navigation.html'"
+         data-ng-if="main.isSecure()" ng-hide="main.enableMinimizeSlider"></div>
+
+    <!-- Page wraper -->
+    <!-- ng-class with current state name give you the ability to extended customization your view -->
+    <div id="{{main.pageId}}" class="gray-bg" ng-class="{'page-wrapper-regularuser':main.enableMinimizeSlider}">
+        <!-- Page wrapper -->
+        <div id="mainHeader" ng-include="'cfv/app/layout/topnavbar.html'"
+             data-ng-if="main.isSecure()"></div>
+
+        <!-- Main view  -->
+        <div id="mainView" data-ui-view></div>
+        <!-- Footer -->
+        <div id="mainFooter" ng-include="'cfv/app/layout/footer.html'"
+             data-ng-if="main.isSecure()" ng-class="{'page-footer-regularuser':main.enableMinimizeSlider}"></div>
+
+    </div>
+    <!-- End page wrapper-->
+
+</div>
+<!-- End wrapper-->
+<!--<div data-ui-view data-ng-if="!main.isSecure()"></div>-->

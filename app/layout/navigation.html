@@ -1,0 +1,48 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul side-navigation class="nav" id="side-menu">
+            <li class="nav-header">
+
+                <div class="dropdown profile-element" dropdown>
+                    <img alt="image" class="img-circle" data-ng-src="{{main.userInfo.image}}" />
+                    <a class="dropdown-toggle" dropdown-toggle href>
+                        <span class="clear">
+                            <span class="block m-t-xs">
+                                <strong class="font-bold">{{main.userInfo.name}}</strong>
+                            </span>
+                            <span class="text-muted text-xs block">
+                                {{main.userInfo.role}}
+                                <!--<b class="caret"></b>-->
+                            </span>
+                        </span>
+                    </a>
+                    <!--<ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a ui-sref="profile">Profile</a></li>
+                        <li><a ui-sref="contacts">Contacts</a></li>
+                        <li><a ui-sref="inbox">Mailbox</a></li>
+                        <li class="divider"></li>
+                        <li><a href="javascript:void(0);" data-ng-click="main.logoutUser()">Logout</a></li>
+                    </ul>-->
+                </div>
+                <div class="logo-element">
+                    CFV
+                </div>
+            </li>
+
+
+            <!--<li data-ui-sref-active="active">
+                <a data-ui-sref="main"><i class="fa fa-laptop"></i> <span class="nav-label">{{'RIGHT_NAVIGATION.'+'HOME' | translate}}</span> </a>
+            </li>-->
+            <li data-ui-sref-active="active" data-ng-if="main.userInfo.role != 'RegularUser'">
+                <a data-ui-sref="companies"><i class="fa fa-desktop"></i> <span class="nav-label">{{'RIGHT_NAVIGATION.'+'HOME' | translate}}</span></a>
+            </li>
+            <li data-ui-sref-active="active" data-ng-if="main.userInfo.role === 'RegularUser'">
+                <a data-ui-sref="mycompany"><i class="fa fa-desktop"></i> <span class="nav-label">{{'RIGHT_NAVIGATION.'+'MY_COMPANY' | translate}}</span></a>
+            </li>
+            <li data-ui-sref-active="active">
+                <a ui-sref="editor"><i class="fa fa-bar-chart"></i> <span class="nav-label">{{'RIGHT_NAVIGATION.'+'EDITOR' | translate}}</span> </a>
+            </li>
+        </ul>
+
+    </div>
+</nav>

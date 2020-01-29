@@ -1,0 +1,21 @@
+﻿<div class="panel" data-ng-controller="License as license">
+    <div class="panel-body">
+        <div class="table-responsive">
+            <div kendo-grid
+                 k-rebind="license.licenseGridOptions"
+                 k-options="license.licenseGridOptions"
+                 k-on-change="license.onLicenseSelect(kendoEvent,updateLicenseWindow)">
+            </div>
+
+            <!-- you will find al the info in license module -->
+
+            <div kendo-window="updateLicenseWindow"
+                 k-options="license.updateLicenseWindowOptions">
+            </div>
+
+        </div>
+    </div>
+    <div class="panel-footer pull-right" style="background-color: white; border-top: 0px">
+        <!--<div data-ng-include="'cfv/app/license/modal/assign-license.html'"></div>-->
+    </div>
+</div>

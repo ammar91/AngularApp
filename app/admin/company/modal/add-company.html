@@ -1,0 +1,29 @@
+﻿<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">{{'COMPANY.'+'MODAL.'+'HEADING' | translate }}</h4>
+    </div>
+    <div class="modal-body">
+        <p>
+            {{'COMMON.'+'TEST' | translate}}
+        </p>
+    </div>
+    <div class="modal-footer">
+        <form class="m-t" role="form" name="CreateCompanyForm">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="{{'COMPANY.'+'MODAL.'+'NAME_FIELD' | translate }}"
+                       required=""
+                       data-ng-model="addCompany.companyModel.name">
+            </div>
+
+            <button type="button" class="btn btn-white" data-ng-click="addCompany.close()">{{'COMPANY.'+'MODAL.'+'CLOSE_BUTTON' | translate }}</button>
+            <button type="submit" class="btn btn-primary"
+                    data-ng-disabled="CreateCompanyForm.$invalid"
+                    data-ng-click="addCompany.createCompany()">
+                {{'COMPANY.'+'MODAL.'+'SAVE_BUTTON' | translate }}
+            </button>
+        </form>
+
+    </div>
+
+</div>
+

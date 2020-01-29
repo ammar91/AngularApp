@@ -1,0 +1,65 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">{{'EDITOR.PAGE_SETUP.HEADING' | translate}}</h4>
+    </div>
+
+    <form name='pageSetup'>
+        <div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label>{{'EDITOR.PAGE_SETUP.PAGE_SIZE_LBL' | translate}}:</label>
+                    <select id="pageSizeSelect" data-ng-model="pageInfo.pageSize" class="form-control m-b" name="paperSize">
+                        <option value="A3">A3 (297 mm x 420 mm)</option>
+                        <option value="A4">A4 (210 mm x 297 mm)</option>
+                        <option value="A5">A5 (148 mm x 210 mm)</option>
+                        <option value="Letter">US-Letter (8,5" x 11")</option>
+                        <option value="Tabloid">US-Tabloid (279 mm x 432 mm)</option>
+                        <option value="Custom">{{'EDITOR.PAGE_SETUP.CUSTOM' | translate}}</option>
+                        <option value="GraphBounds">{{'EDITOR.PAGE_SETUP.ADJUST_TO_GRAPH' | translate}}</option>
+                    </select>
+                </div>
+                <div id="pageLayout" class="radio" style="display: {{visibility.predef}}">
+                    <label> <input type="radio" name="layout" value="p" ng-model="pageInfo.layout">{{'EDITOR.PAGE_SETUP.PORTRAIT' | translate}}</label>
+                    <label> <input type="radio" name="layout" value="l" ng-model="pageInfo.layout">{{'EDITOR.PAGE_SETUP.LANDSCAPE' | translate}}</label>
+                </div>
+                <div id="cutomInfo" style="display: {{visibility.custom}}">
+                    <input type="number" ng-model="pageInfo.width"> x
+                    <input type="number" ng-model="pageInfo.height"> {{'EDITOR.PAGE_SETUP.PIXEL' | translate}}
+                </div>
+                <div id="graphBounds" style="display: {{visibility.graphBounds}}">
+                    {{pageInfo.width}} x {{pageInfo.height}} {{'EDITOR.PAGE_SETUP.PIXEL' | translate}}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" ng-click="close()">
+                    {{'EDITOR.PAGE_SETUP.CANCEL_BTN' | translate}}
+                </button>
+                <button type="submit" class="btn btn-primary" ng-click="save()">
+                    {{'EDITOR.PAGE_SETUP.OK_BTN' | translate}}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript"">
+(function () {
+    var selectHandler = function() {  
+        if ($('#pageSizeSelect').val() == "Custom" ) {
+            $('#pageLayout').hide();
+            $('#cutomInfo').show();      
+            $('#graphBounds').hide();
+        } else if ($('#pageSizeSelect').val() == "GraphBounds") {
+            $('#pageLayout').hide();
+            $('#cutomInfo').hide();
+            $('#graphBounds').show();
+        } else {
+            $('#pageLayout').show();
+            $('#cutomInfo').hide();
+            $('#graphBounds').hide();   
+        }
+    };
+    $('#pageSizeSelect').on('change', selectHandler);
+})();
+</script>

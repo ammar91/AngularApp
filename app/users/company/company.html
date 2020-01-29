@@ -1,0 +1,102 @@
+﻿<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                My Company
+            </li>
+            <li data-ng-repeat="item in userCompany.breadCrumbs">
+                <a href="javascript:void(0);">{{item.name}}</a>
+            </li>
+
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h4>Comapany Name</h4>
+                </div>
+                <div class="ibox-content no-padding border-left-right">
+                    <div id="folderTreeView"
+                         kendo-tree-view
+                         k-ng-delay="userCompany.folderOptions"
+                         k-options="userCompany.folderOptions">
+                    </div>
+                    <div ng-show="userCompany.isTreeviewHasFolder" style="padding-left: 8px;padding-top: 8px;">
+                        <a href="#" ng-click="userCompany.createFolderAtRoot()">
+                            <span class="fa-stack fa-sm">
+                                <i class="fa fa-folder fa-stack-2x" style="color: #F4BF7E;"></i>
+                                <i class="fa fa-plus fa-stack-1x" style="color: green;left: 8px;top: 7px;"></i>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="clearfix"></div>
+                </div>
+                <ul id="folderMenu"
+                    style="width:114px"
+                    kendo-context-menu
+                    k-options="userCompany.folderMenuOptions">
+                    <li>new folder</li>
+                    <li>delete folder</li>
+                </ul>
+                <div kendo-window="userCompany.createFolderWindow"
+                     k-options=" userCompany.folderWindowOptions">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 animated fadeInRight">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h4>Company name</h4>
+                </div>
+                <div class="ibox-content">
+                    <div class="grid-file-upload-container" grid-drop-zone>
+                        <div id="filesGrid"
+                             kendo-grid
+                             k-rebind="userCompany.filesGridOptions"
+                             k-options="userCompany.filesGridOptions"
+                             k-on-change="userCompany.onFileSelect(kendoEvent)">
+                        </div>
+                        <form id="gridDragDropUpload" method="post" enctype="multipart/form-data" style="display: none">
+                            <input name="file"
+                                   type="file"
+                                   kendo-upload
+                                   k-options="userCompany.uploaderOptions" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <ul id="filesMenu"
+                style="width:98px"
+                kendo-context-menu
+                k-options="userCompany.filesMenuOptions"></ul>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <button type="button" class="btn  btn-xs btn-success" ng-click="userCompany.addNewFolder()">New Folder</button>&nbsp;
+            <button type="button" class="btn  btn-xs btn-danger" ng-click="userCompany.deleteFolder()">Delete Folder</button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn  btn-xs btn-danger" ng-click="userCompany.deleteSelectedFile()">Delete Current File</button>
+        </div>
+        <div class="col-md-5">
+
+        </div>
+        <div class="col-md-2">
+            <div class="file-manager">
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+

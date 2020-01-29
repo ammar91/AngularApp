@@ -1,0 +1,33 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <i class="fa fa-laptop modal-icon"></i>
+        <h4 class="modal-title">{{'ADMIN.'+'USER.'+'MODAL.'+'INVITE_USER.'+'HEADING' | translate}}</h4>
+        <small class="font-bold">{{'COMMON.'+'TEST' | translate}}</small>
+    </div>
+
+    <form name='inviteForm'>
+        <div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label>{{'ADMIN.'+'USER.'+'MODAL.'+'INVITE_USER.'+'LABELS.'+'EMAIL' | translate}}:</label>
+                    <input type="email"
+                           placeholder="{{'ADMIN.'+'USER.'+'MODAL.'+'INVITE_USER.'+'FIELDS.'+'EMAIL' | translate}}"
+                           class="form-control"
+                           required data-ng-model="inviteUser.user.email">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" ng-click="inviteUser.close()">
+                    {{'ADMIN.'+'USER.'+'MODAL.'+'INVITE_USER.'+'BUTTONS.'+'CLOSE' | translate}}
+                </button>
+                <button type="submit" class="btn btn-primary"
+                        ng-disabled="inviteForm.$invalid"
+                        ng-click="inviteUser.sendInvite()">
+                    {{'ADMIN.'+'USER.'+'MODAL.'+'INVITE_USER.'+'BUTTONS.'+'INVITE' | translate}}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+

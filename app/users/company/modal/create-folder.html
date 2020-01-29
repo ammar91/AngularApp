@@ -1,0 +1,25 @@
+﻿<form class="form-horizontal" name="createFolderForm">
+    <div class="col-lg-10">
+        <input type="text"
+               required
+               style="height: 19px;margin: 5px 0px 13px 0px;"
+               placeholder="{{'USER.'+'COMPANY_FILES.'+'MODAL.'+'CREATE_FOLDER.'+'FIELDS.'+'NAME' | translate}}"
+               data-ng-model="userCompany.folderName"
+               class="form-control">
+    </div>
+    <div col-lg-2 class="pull-right">
+        <button class="btn btn-block btn-white" type="button"
+                style="width: 62px"
+                data-ng-click="userCompany.createFolderWindow.close()">
+            {{'USER.'+'COMPANY_FILES.'+'MODAL.'+'CREATE_FOLDER.'+'BUTTONS.'+'CLOSE' | translate}}
+        </button>
+    </div>
+    <div class="col-lg-2  pull-left">
+        <button class="btn btn-block btn-primary" type="button"
+                style="width: 62px"
+                data-ng-disabled="createFolderForm.$invalid"
+                data-ng-click="userCompany.createFolder()">
+            {{'USER.'+'COMPANY_FILES.'+'MODAL.'+'CREATE_FOLDER.'+'BUTTONS.'+'ADD' | translate}}
+        </button>
+    </div>
+</form>

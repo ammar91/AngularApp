@@ -1,0 +1,222 @@
+﻿<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>{{'ADMIN.'+'COMPANY_DETAIL.'+'HEADING' | translate}}</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a data-ui-sref="main">{{'BREADCRUM.'+'HOME' | translate}}</a>
+            </li>
+            <li>
+                <a data-ui-sref="companies">{{'BREADCRUM.'+'COMPANIES' | translate}}</a>
+            </li>
+            <li class="active">
+                <strong>{{companyDetail.companyInfo.name}}</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h4>{{companyDetail.companyInfo.name}}</h4>
+                    <div class="pull-right" style="margin-top: -30px" data-ng-if="companyDetail.companyInfo.logoFile != undefined">
+                        <button class="btn btn-xs"
+                                data-ng-show="!companyDetail.isEditLogo"
+                                data-ng-click="companyDetail.editLogo()">
+                            <i class="fa fa-edit"></i>&nbsp;&nbsp;
+                            <span class="bold">{{'ADMIN.'+'COMPANY_DETAIL.'+'BUTTONS.'+'EDIT_LOGO' | translate}}</span>
+                        </button>
+                        <button class="btn btn-xs"
+                                data-ng-show="companyDetail.isEditLogo"
+                                data-ng-click="companyDetail.cancelEditLogo()">
+                            <i class="fa fa-edit"></i>&nbsp;&nbsp;
+                            <span class="bold">{{'ADMIN.'+'COMPANY_DETAIL.'+'BUTTONS.'+'CANCEL_EDIT_LOGO' | translate}}</span>
+                        </button>
+                    </div>
+
+                </div>
+                <div class="ibox-content no-padding border-left-right">
+                    <div>
+                        <div data-ng-show="companyDetail.isEditLogo || companyDetail.companyInfo.logoFile === undefined">
+                            <form method="post" enctype="multipart/form-data">
+                                <input name="file"
+                                       type="file"
+                                       kendo-upload
+                                       k-options="companyDetail.UploadOptions" />
+                            </form>
+
+                        </div>
+
+                        <img data-ng-show="!companyDetail.isEditLogo && companyDetail.companyInfo.logoFile != undefined"
+                             data-ng-src="{{companyDetail.companyInfo.logoFile}}" class="img-responsive" />
+
+
+                    </div>
+                    <div class="file-manager">
+                        <div class="text-center m-t-md pull-left">
+                            <button class="btn btn-xs btn-default" type="button"
+                                    data-ng-click="addLicenseWindow.center().open()">
+                                <i class="fa fa-info"></i>&nbsp;&nbsp;
+                                <span class="bold">{{'ADMIN.'+'COMPANY_DETAIL.'+'BUTTONS.'+'MANAGE_LICENSE' | translate}}</span>
+                            </button>
+                            <button class="btn btn-xs btn-danger " type="button"
+                                    data-ng-show="companyDetail.companyInfo.isActive"
+                                    data-ng-click="companyDetail.deactivateCompany()">
+                                <i class="fa fa-remove"></i>&nbsp;&nbsp;
+                                <span class="bold">{{'ADMIN.'+'COMPANY_DETAIL.'+'BUTTONS.'+'DEACTIVATE_COMPANY' | translate}}</span>
+                            </button>
+                            <button class="btn btn-xs btn-primary" type="button"
+                                    data-ng-show="!companyDetail.companyInfo.isActive"
+                                    data-ng-click="companyDetail.activateCompany()">
+                                <i class="fa fa-plus"></i>&nbsp;&nbsp;
+                                <span class="bold">{{'ADMIN.'+'COMPANY_DETAIL.'+'BUTTONS.'+'ACTIVATE_COMPANY' | translate}}</span>
+                            </button>
+                            <div kendo-window="addLicenseWindow"
+                                 k-options="companyDetail.addLicenseWindowOptions">
+                            </div>
+
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 animated fadeInRight">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h4>{{companyDetail.companyInfo.name}}</h4>
+                </div>
+                <div class="ibox-content">
+                    <div class="alert alert-info">
+                        <strong>{{'COMMON.'+'HELP_TEXT' | translate}}</strong>
+
+                    </div>
+                    <form method="get" class="form-horizontal">
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{'ADMIN.'+'COMPANY_DETAIL.'+'FORM.'+'LABELS.'+'ISACTIVE' | translate}}</label>
+
+                            <div class="col-sm-10">
+                                <span class="label label-primary" data-ng-show="companyDetail.companyInfo.isActive">Active</span>
+                                <span class="label label-danger" data-ng-show="!companyDetail.companyInfo.isActive">In Active</span>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{'ADMIN.'+'COMPANY_DETAIL.'+'FORM.'+'LABELS.'+'NAME' | translate}}</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="companyNameTextBox"
+                                       placeholder="{{'ADMIN.'+'COMPANY_DETAIL.'+'FORM.'+'FIELDS.'+'NAME' | translate}}"
+                                       data-ng-readonly="true"
+                                       data-ng-model="companyDetail.companyInfo.name">
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{'ADMIN.'+'COMPANY_DETAIL.'+'FORM.'+'LABELS.'+'LICENSE' | translate}}</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       placeholder="{{'ADMIN.'+'COMPANY_DETAIL.'+'FORM.'+'FIELDS.'+'LICENSE' | translate}}"
+                                       data-ng-readonly="true"
+                                       data-ng-model="companyDetail.companyInfo.license">
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{'ADMIN.'+'COMPANY_DETAIL.'+'FORM.'+'LABELS.'+'ADDRESS' | translate}}</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       placeholder="{{'ADMIN.'+'COMPANY_DETAIL.'+'FORM.'+'FIELDS.'+'ADDRESS' | translate}}"
+                                       data-ng-dblclick="companyDetail.editCompanyDetail($event)"
+                                       data-ng-blur="companyDetail.updateCompanyDetail($event)"
+                                       data-ng-model="companyDetail.companyInfo.address"
+                                       data-ng-readonly="true">
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{'ADMIN.'+'COMPANY_DETAIL.'+'FORM.'+'LABELS.'+'WEBSITES' | translate}}</label>
+
+                            <div class="col-sm-10">
+                                <input type="url" class="form-control"
+                                       placeholder="{{'ADMIN.'+'COMPANY_DETAIL.'+'FORM.'+'FIELDS.'+'WEBSITES' | translate}}"
+                                       data-ng-dblclick="companyDetail.editCompanyDetail($event)"
+                                       data-ng-blur="companyDetail.updateCompanyDetail($event)"
+                                       data-ng-model="companyDetail.companyInfo.website"
+                                       data-ng-readonly="true">
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{'ADMIN.'+'COMPANY_DETAIL.'+'FORM.'+'LABELS.'+'CONTACT_PERSON' | translate}}</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       placeholder="{{'ADMIN.'+'COMPANY_DETAIL.'+'FORM.'+'FIELDS.'+'CONTACT_PERSON' | translate}}"
+                                       data-ng-dblclick="companyDetail.editCompanyDetail($event)"
+                                       data-ng-blur="companyDetail.updateCompanyDetail($event)"
+                                       data-ng-model="companyDetail.companyInfo.contact"
+                                       data-ng-readonly="true">
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{'ADMIN.'+'COMPANY_DETAIL.'+'FORM.'+'LABELS.'+'TELEPHONE' | translate}}</label>
+
+                            <div class="col-sm-10">
+                                <input id="companyPhone"
+                                       type="tel"
+                                       telephone
+                                       class="form-control"
+                                       data-ng-dblclick="companyDetail.editCompanyDetail($event)"
+                                       data-ng-model="companyDetail.companyInfo.phone"
+                                       data-ng-readonly="true">
+                            </div>
+
+                        </div>
+                    </form>
+
+                    <div class="row m-t-sm">
+                        <div class="col-lg-12">
+                            <div class="panel blank-panel ui-tab">
+
+                                <tabset>
+                                    <tab heading="{{'ADMIN.'+'COMPANY_DETAIL.'+'TABS.'+'USER' | translate}}">
+                                        <div class="feed-activity-list">
+                                            <div class="col-lg-12" data-ng-include="'cfv/app/admin/user/user-list.html'">
+                                            </div>
+                                        </div>
+                                    </tab>
+                                    <tab heading="{{'ADMIN.'+'COMPANY_DETAIL.'+'TABS.'+'LICENSE' | translate}}"
+                                         data-ng-click="companyDetail.getCompanyLicenses()">
+                                        <div class="col-lg-12" data-ng-include="'cfv/app/admin/license/license-list.html'">
+                                        </div>
+                                    </tab>
+                                    <tab heading="{{'ADMIN.'+'COMPANY_DETAIL.'+'TABS.'+'FILES' | translate}}">
+                                        <div id="filesFolderTreeView"
+                                             kendo-tree-view
+                                             k-ng-delay="companyDetail.filesFolderOptions"
+                                             k-options="companyDetail.filesFolderOptions">
+                                        </div>
+                                    </tab>
+
+                                </tabset>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
