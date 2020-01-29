@@ -1,1 +1,1 @@
-created reporsitory for code evaluation
+reporsitory for code evaluation
